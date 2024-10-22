@@ -38,6 +38,18 @@ public interface IResourceCenterResourceCrossoverService extends ICrossoverServi
     void handleBatchSearchList(ResourceSearchVo resourceSearchVo);
 
     /**
+     * 设置ipFieldAttrId字段和nameFieldAttrId字段
+     * @param resourceSearchVo
+     */
+    void setIpFieldAttrIdAndNameFieldAttrId(ResourceSearchVo resourceSearchVo);
+
+    /**
+     * 设置isIpFieldSort字段和isNameFieldSort字段
+     * @param resourceSearchVo
+     */
+    void setIsIpFieldSortAndIsNameFieldSort(ResourceSearchVo resourceSearchVo);
+
+    /**
      * 查询所有后代模型的id列表
      * @param idList
      * @return
