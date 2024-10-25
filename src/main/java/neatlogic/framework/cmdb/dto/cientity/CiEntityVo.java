@@ -37,10 +37,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CiEntityVo extends BasePageVo {
@@ -185,6 +182,8 @@ public class CiEntityVo extends BasePageVo {
     private Integer expiredDay;
     @EntityField(name = "账号", type = ApiParamType.STRING)
     private String account;
+    @JSONField(serialize = false)//接受前端数据时，用于保存特殊的变量，例如#expander
+    private Map<String, Object> specialParamterMap;
 
     public CiEntityVo() {
 
@@ -198,6 +197,21 @@ public class CiEntityVo extends BasePageVo {
     public CiEntityVo(Long ciId, Long id) {
         this.ciId = ciId;
         this.id = id;
+    }
+
+    public void addSpecialParameter(String key, Object value) {
+        if (specialParamterMap == null) {
+            specialParamterMap = new HashMap<>();
+        }
+        specialParamterMap.put(key, value);
+    }
+
+    public Map<String, Object> getSpecialParamterMap() {
+        return specialParamterMap;
+    }
+
+    public void setSpecialParamterMap(Map<String, Object> specialParamterMap) {
+        this.specialParamterMap = specialParamterMap;
     }
 
     public List<Long> getFilterCiIdList() {
