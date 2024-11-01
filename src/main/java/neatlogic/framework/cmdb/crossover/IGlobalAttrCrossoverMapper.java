@@ -10,6 +10,8 @@ public interface IGlobalAttrCrossoverMapper extends ICrossoverService {
 
     List<GlobalAttrVo> searchGlobalAttr(GlobalAttrVo globalAttrVo);
 
+    List<GlobalAttrItemVo> getAllGlobalAttrItemByAttrId(Long attrId);
+
     List<GlobalAttrItemVo> searchGlobalAttrItem(GlobalAttrItemVo globalAttrItemVo);
 
     GlobalAttrItemVo getGlobalAttrItemById(Long id);
