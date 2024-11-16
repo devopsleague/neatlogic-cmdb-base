@@ -438,4 +438,8 @@ public class ResourceSearchVo extends ConditionConfigVo {
     public void setNameFieldAttrId(Long nameFieldAttrId) {
         this.nameFieldAttrId = nameFieldAttrId;
     }
+
+    public boolean isCustomCondition(){
+        return CollectionUtils.isNotEmpty(conditionGroupList);
+    }
 }
