@@ -28,7 +28,6 @@ import neatlogic.framework.cmdb.enums.EditModeType;
 import neatlogic.framework.cmdb.enums.RelActionType;
 import neatlogic.framework.cmdb.enums.RelDirectionType;
 import neatlogic.framework.cmdb.enums.TransactionActionType;
-import neatlogic.framework.cmdb.exception.ci.CiUniqueAttrNotFoundException;
 import neatlogic.framework.common.constvalue.ApiParamType;
 import neatlogic.framework.restful.annotation.EntityField;
 import neatlogic.framework.util.SnowflakeUtil;
@@ -824,7 +823,8 @@ public class CiEntityTransactionVo implements Serializable {
             JSONObject jsonObj = new JSONObject();
             for (Long uniqueAttrId : uniqueAttrIdList) {
                 if (!this.attrEntityData.containsKey("attr_" + uniqueAttrId)) {
-                    throw new CiUniqueAttrNotFoundException(this.ciId, uniqueAttrId);
+                    //throw new CiUniqueAttrNotFoundException(this.ciId, uniqueAttrId);
+                    jsonObj.put("attr_" + uniqueAttrId, "");
                 } else {
                     jsonObj.put("attr_" + uniqueAttrId, this.attrEntityData.getJSONObject("attr_" + uniqueAttrId).getJSONArray("valueList"));
                 }
